@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome')->with('name','( ͡° ͜ʖ ͡°)');
-// });
+  Route::get('/', function () {
+     return view('welcome')->with('name','( ͡° ͜ʖ ͡°)');
+ });
 
 Route::get('/donkey','MyController@funcao');
 
@@ -21,7 +21,7 @@ Route::get('/view1', function () {
     return view('pages.view1');
 });
 
-Route::get('/{x}/{y}', 'MyController@parametrizando');
+//Route::get('/{x}/{y}', 'MyController@parametrizando');
 
 Route::get('/view2/{id}', function ($id) {
     return "O serviço do ".$id." é muito bom.<br><br>Gostou?<a href='".url('view1')."'> Esse é o contato dele.</a>";
@@ -51,4 +51,12 @@ Route::get('/parametros/{p1}/{p2}', function($p1, $p2){
   return view('welcome', ['texto1'=>$p1, 'texto2'=>$p2]);
 });
 
-Route::post('/rotinha', 'MyController@add')->name('highway');
+Route::post('/rotinha', 'UsuarioController@store')->name('highway');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/apagar/{id}', 'UsuarioController@destroy');
+
+Route::get('/listar', 'UsuarioController@index');

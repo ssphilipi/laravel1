@@ -7,6 +7,8 @@
         <title>Projeto 1</title>
     </head>
     <body>
-      <h1>Hello World</h1>
+      @foreach ($variavel as $item)
+        {{$item->name}} e {{$item->lastname}}<br>
+      @endforeach
     </body>
 </html>
